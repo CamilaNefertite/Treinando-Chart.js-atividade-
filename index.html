@@ -7,32 +7,32 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
-        body {
-            display: flex;
-        }
-        #myChart, #mySecChart{
-            position: relative;
-            height: 100vh;
-            width: 100vh;
-        }
+      body {
+        display: flex;
+      }
+      #grafico_linha,
+      #grafico_barra {
+        position: relative;
+        height: 100vh;
+        width: 100vh;
+      }
     </style>
   </head>
   <body>
     <div>
-      <canvas id="myChart"></canvas>
+      <canvas id="grafico_linha"></canvas>
     </div>
 
     <div>
-      <canvas id="mySecChart"></canvas>
+      <canvas id="grafico_barra"></canvas>
     </div>
-
   </body>
 </html>
 <script>
-  const labels = ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
+  const labels_1 = ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
 
-  const data = {
-    labels: labels,
+  const data_1 = {
+    labels: labels_1,
     datasets: [
       {
         label: "Temperatura",
@@ -49,11 +49,16 @@
     ],
   };
 
+  const config_grafico1 = {
+    type: "line",
+    data: data_1,
+    options: {},
+  };
 
-const labels2 = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"];
+  const labels_2 = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"];
 
-  const data2 = {
-    labels: labels2,
+  const data_2 = {
+    labels: labels_2,
     datasets: [
       {
         label: "Temperatura Média",
@@ -70,20 +75,20 @@ const labels2 = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"];
     ],
   };
 
-  const config_grafico1 = {
-    type: "line",
-    data: data,
-    options: {},
-  };
-
-    const config_grafico2 = {
+  const config_grafico2 = {
     type: "bar",
-    data: data2,
+    data: data_2,
     options: {},
   };
 </script>
 
 <script>
-  const myChart = new Chart(document.getElementById("myChart"), config_grafico1);
-  const mySecChart = new Chart(document.getElementById("mySecChart"), config_grafico2);
+  const grafico_linha = new Chart(
+    document.getElementById("grafico_linha"),
+    config_grafico1,
+  );
+  const grafico_barra = new Chart(
+    document.getElementById("grafico_barra"),
+    config_grafico2,
+  );
 </script>
